@@ -1,8 +1,10 @@
 1. `git clone https://github.com/lisov/mobilunity-test`
 
-2. `npm i`
+2. `cd mobilunity-test`
 
-3. `npm start`
+3. `npm i`
+
+4. `npm start`
 
 ## 
 
