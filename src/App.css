@@ -1,0 +1,108 @@
+
+
+.mainTitle {
+  margin: 50px auto 0 auto;
+  width: 543px;
+  font-size: 13px;
+  text-align: left;
+  padding: 0 0 12px 11px;
+}
+.sdkWrap {
+  display: flex;
+  width: 543px;
+  height: 327px;
+  border: 1px solid #888;
+  box-sizing: border-box;
+  margin: 0 auto;
+   
+}
+.sdkBar {
+  width: 170px;
+  padding: 5px;
+  border-right: 1px solid #888;
+  overflow-y: scroll;
+}
+.sdkBar li{
+  margin: 8px 0;
+  font-size: 13px;
+  
+}
+label, input[type=radio] {
+  cursor: pointer;
+}
+.sdkBar input[type=radio] {
+  margin-right: 5px;
+}
+#searchInput {
+  border: 1px solid #888;
+  border-radius: 10px;
+  padding: 5px 5px 5px 25px;
+  width: 100px;
+  background: #e8e8e8;
+}
+
+.searchIcon {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: url('searchIcon.png');
+  position: absolute;
+  left: 20px;
+  top: 4px;
+}
+
+
+.sdkMain {
+  width: 370px;
+  overflow-y: scroll;
+}
+
+.sdkMain ul{
+  width: 370px;
+}
+
+.sdkMain ul li{
+  width: 182px;
+   height: 80px; 
+  float: left;
+}
+
+.title:before{
+  content: '•';
+  position: absolute;
+  left: 13px;
+}
+
+.item{
+  padding: 25px 15px 0 25px;
+  position: relative;
+  
+}
+.tags{
+  font-size: 10px;
+  font-weight: bold;
+}
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
