@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import arr from './sdks.json';
+import data from './sdks.json';
 import Bar from './components/Bar';
 
 function Item(props) {
@@ -22,29 +22,28 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      data: arr.results,
+      data: data.results,
       tags: []
     }
     this.filter = this.filter.bind(this);
-    this.imutableData = arr.results;
+    this.imutableData = data.results;
   }
 
   filter({target}) {
     // main method for filtered data
     var tag = target.id,
-        newData = [];
-        console.log(target.value);
-    if (tag === "all" || (tag === "searchInput" && !target.value.length)) {
-      // if select "all" filter or empty search filed  - return main state;
-      newData = this.imutableData;
+        filteredData = [];
+
+    if (emptySearchOrSelectAll()) {
+      filteredData = this.imutableData;
     } else if (tag === "searchInput") {
         // if search filter
-        newData = this.imutableData.filter((item) => {
+        filteredData = this.imutableData.filter((item) => {
           return item.title.toLowerCase().indexOf(target.value.toLowerCase()) !== -1;
         });
     } else {
        // if search by tags
-      newData = this.imutableData.filter((item) => {
+      filteredData = this.imutableData.filter((item) => {
         if (item.tags.length > 1) {
           let newArr = item.tags.filter((i) => {
             return i === tag;
@@ -58,38 +57,44 @@ class App extends Component {
         return false;
       });
     }
+
+
+    function emptySearchOrSelectAll() {
+      // if select "all" filter or empty search filed  - return main state;
+      return tag === "all" || (tag === "searchInput" && !target.value.length);
+    }
     
     // update state
     this.setState({
-      data: newData
+      data: filteredData
     });
   }
 
   componentDidMount() {
+    // set tags for filter panel
+    this.setState({
+      tags: unique(data.results)
+    });
+
     function unique(arr) {
-      // return arr with unique data(tags)
+      // return arr with unique data(tags);
+      // var obj = object for check uique property
+      // obj[item] = true; = remember item of array as property obj
+      
       var obj = {},
           i = 0;
 
       for (i; i < arr.length; i++) {
-        var str;
         if (arr[i].tags.length > 1) {
           arr[i].tags.map((item) => {
-            str = item;
+            obj[item] = true; 
           });
         } else {
-          if (arr[i].tags.length) {
-            str = arr[i].tags[0];
-          }
+          if (arr[i].tags.length) obj[arr[i].tags[0]] = true;
         }
-        obj[str] = true; // remember string as property obj
       }
       return Object.keys(obj);
     }
-    
-    this.setState({
-      tags: unique(arr.results)
-    })
   }
 
   render() {
