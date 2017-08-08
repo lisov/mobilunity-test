@@ -18,7 +18,7 @@
 }
 .sdkBar {
   width: 170px;
-  padding: 5px;
+  padding: 8px;
   border-right: 1px solid #888;
   overflow-y: scroll;
 }

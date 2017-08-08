@@ -9,7 +9,7 @@ function Item(props) {
       <div className="item">
         <div className="title">{props.title}</div>
         <div className="tags">
-          {props.tags.map((item, i)=>{
+          {props.tags.map((item, i) => {
             return i !== props.tags.length -1 ? item + ', ' : item
           })}
         </div>
@@ -33,7 +33,6 @@ class App extends Component {
     // main method for filtered data
     var tag = target.id,
         newData = [];
-    // debugger;
         console.log(target.value);
     if (tag === "all" || (tag === "searchInput" && !target.value.length)) {
       // if select "all" filter or empty search filed  - return main state;
